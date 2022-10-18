@@ -3,7 +3,6 @@ import { InsScarpperImpl } from './scrapper';
 import { ScrapperManager } from './scrapperManager';
 
 export async function makeScrapper() {
-  throw new Error('fuck');
   const browser = await puppeteer.launch({
     args: ['--disk-cache-size=0', '--lang=en-US', '--no-sandbox'],
   });
