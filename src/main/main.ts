@@ -15,8 +15,6 @@ class AppUpdater {
   }
 }
 
-const bootstrapCompleted = bootstrap();
-
 let mainWindow: BrowserWindow | null = null;
 
 if (process.env.NODE_ENV === 'production') {
@@ -44,6 +42,14 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
+  try {
+    const bootstrapCompleted = await bootstrap();
+  } catch (e) {
+    console.log('ee', e);
+  } finally {
+    console.log('end');
+  }
+
   if (isDebug) {
     await installExtensions();
   }
@@ -74,8 +80,6 @@ const createWindow = async () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
-
-    await bootstrapCompleted;
 
     if (process.env.START_MINIMIZED) {
       mainWindow.minimize();
