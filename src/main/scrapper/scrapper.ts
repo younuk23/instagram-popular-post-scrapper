@@ -153,7 +153,7 @@ class InsScarpperImpl implements InsScarpper {
       },
     });
 
-    page.close();
+    // page.close();
 
     return screenshotPath;
   }
